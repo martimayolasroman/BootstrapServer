@@ -1,12 +1,2 @@
 ﻿  mainServer.cpp
-C:\Users\mmayo\Desktop\AA2_Parchis_TCP\Dependencies\SFML\include\SFML\System\Exception.hpp(41,47): warning C4275: se ha utilizado una interfaz no de DLL class 'std::runtime_error' como base para la interfaz DLL class 'sf::Exception'
-  (compilando archivo de origen "mainServer.cpp")
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\stdexcept(100,19):
-  vea la declaración de 'std::runtime_error'
-  C:\Users\mmayo\Desktop\AA2_Parchis_TCP\Dependencies\SFML\include\SFML\System\Exception.hpp(41,23):
-  vea la declaración de 'sf::Exception'
-  
-mainServer.obj : error LNK2019: símbolo externo "__declspec(dllimport) void __cdecl check(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (__imp_?check@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) sin resolver al que se hace referencia en la función "void __cdecl check_lib(void)" (?check_lib@@YAXXZ)
-mainServer.obj : error LNK2019: símbolo externo "__declspec(dllimport) void __cdecl check(class std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct std::less<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >,class std::allocator<struct std::pair<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const ,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > > const &)" (__imp_?check@@YAXAEBV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@@std@@@2@@std@@@Z) sin resolver al que se hace referencia en la función "void __cdecl check_lib(void)" (?check_lib@@YAXXZ)
-mainServer.obj : error LNK2019: símbolo externo __imp__get_driver_instance_by_name sin resolver al que se hace referencia en la función get_driver_instance_by_name
-C:\Users\mmayo\Desktop\AA2_Parchis_TCP\x64\Debug\BootstrapServer.exe : fatal error LNK1120: 3 externos sin resolver
+C:\Users\mmayo\OneDrive\Escriptori\Parchis_TCP\BootstrapServer\mainServer.cpp(5,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
