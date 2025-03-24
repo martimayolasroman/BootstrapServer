@@ -198,7 +198,14 @@ int main()
     }*/
 
 
+
+    /// Socket Selector-----------------
+
     sf::TcpListener listener;
+    sf::SocketSelector selector;
+    std::vector<sf::TcpSocket*> clientes;
+    sf::TcpSocket* newClient;
+
     sf::TcpSocket client; 
 
     bool closeServer = false;
@@ -206,37 +213,60 @@ int main()
 
     if (listener.listen(LINTENER_PORT) != sf::Socket::Status::Done) {
         std::cerr << "No puedo escuchar el puerto" << std::endl;
+        closeServer = true;
     }
     std::cout << "Esperando conexiones..." << std::endl;
 
+    selector.add(listener);
+
     while (!closeServer) {
        
+        /// Socket Selector-----------------
 
-        if (listener.accept(client) == sf::Socket::Status::Done) {
-            std::cout << "Cliente conectado desde " << client.getRemoteAddress().value() << std::endl;
-
-            sf::Packet packet;
-            std::string message = "Hola cliente";
-
-            if (client.receive(packet) == sf::Socket::Status::Disconnected) {
-                // Limpiar toda la informacion del servidor para ese cliente en concreto
+        if (selector.wait()) {
+            if (selector.isReady(listener)) {
+                newClient = new sf::TcpSocket();
+                if (listener.accept(*newClient) == sf::Socket::Status::Done) {
+                    newClient->setBlocking(false);
+                    selector.add(*newClient);
+                    clientes.push_back(newClient);
+                    std::cout << "Nueva conexion establecid" << std::endl;
+                }
             }
-
-
-            packet << tipoPaquete::HANDSHAKE << message;
-
-            if (client.send(packet) == sf::Socket::Status::Done) {
-                std::cout << "Mensaje enviado: " << message << std::endl;
-            }
-            else {
-                std::cerr << "Error al enviar el mensaje al cliente" << std::endl;
-                packet.clear();
-            }
-
         }
-        else {
-            std::cout << "Error en el proceso de conexion de el cliente " << std::endl;
-        }
+
+
+
+        //-------------------------------------
+
+
+
+
+    //    if (listener.accept(client) == sf::Socket::Status::Done) {
+    //        std::cout << "Cliente conectado desde " << client.getRemoteAddress().value() << std::endl;
+
+    //        sf::Packet packet;
+    //        std::string message = "Hola cliente";
+
+    //        if (client.receive(packet) == sf::Socket::Status::Disconnected) {
+    //            // Limpiar toda la informacion del servidor para ese cliente en concreto
+    //        }
+
+
+    //        packet << tipoPaquete::HANDSHAKE << message;
+
+    //        if (client.send(packet) == sf::Socket::Status::Done) {
+    //            std::cout << "Mensaje enviado: " << message << std::endl;
+    //        }
+    //        else {
+    //            std::cerr << "Error al enviar el mensaje al cliente" << std::endl;
+    //            packet.clear();
+    //        }
+
+    //    }
+    //    else {
+    //        std::cout << "Error en el proceso de conexion de el cliente " << std::endl;
+    //    }
 
 
     }

@@ -1,14 +1,1 @@
-﻿  mainServer.cpp
-C:\Users\mmayo\OneDrive\Escriptori\Parchis_TCP\Dependencies\SFML\include\SFML\System\Exception.hpp(41,47): warning C4275: se ha utilizado una interfaz no de DLL class 'std::runtime_error' como base para la interfaz DLL class 'sf::Exception'
-  (compilando archivo de origen "mainServer.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include\stdexcept(100,19):
-      vea la declaración de 'std::runtime_error'
-      C:\Users\mmayo\OneDrive\Escriptori\Parchis_TCP\Dependencies\SFML\include\SFML\System\Exception.hpp(41,23):
-      vea la declaración de 'sf::Exception'
-  
-  Generando código
-  1 of 87 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-  BootstrapServer.vcxproj -> C:\Users\mmayo\OneDrive\Escriptori\Parchis_TCP\x64\Release\BootstrapServer.exe
+﻿  BootstrapServer.vcxproj -> C:\Users\mmayo\OneDrive\Escriptori\Parchis_TCP\x64\Release\BootstrapServer.exe
