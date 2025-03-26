@@ -203,7 +203,7 @@ int main()
 
     sf::TcpListener listener;
     sf::SocketSelector selector;
-    std::vector<sf::TcpSocket*> clientes;
+    std::vector<sf::TcpSocket*> clientes; //Hacer Map para practica
     sf::TcpSocket* newClient;
 
     sf::TcpSocket client; 
@@ -230,8 +230,31 @@ int main()
                     newClient->setBlocking(false);
                     selector.add(*newClient);
                     clientes.push_back(newClient);
-                    std::cout << "Nueva conexion establecid" << std::endl;
+                    std::cout << "Nueva conexion establecida de: "<< newClient->getRemoteAddress().value() << std::endl;
                 }
+            }
+            else {
+                
+                for (int i = 0;i < clientes.size();i++) {
+                    if (selector.isReady(*clientes[i])) {
+                        sf::Packet packet;
+                        if (clientes[i]->receive(packet) == sf::Socket::Status::Done) {
+                            std::string messsage;
+                            packet >> messsage;
+                            std::cout << "Mensaje recibido: " << messsage << std::endl;
+                            //break;
+                        }
+                        if (clientes[i]->receive(packet) == sf::Socket::Status::Disconnected) {
+                           
+                            selector.remove(*clientes[i]);
+                            delete clientes[i];
+                            clientes.erase(clientes.begin() + i);
+                            i--;
+
+                        }
+                    }
+                }
+
             }
         }
 
